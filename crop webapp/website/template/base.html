@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %} {% endblock %} </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            *{
+          margin:0;
+          padding:0;
+          }
+          nav{
+          background-color: white;
+          height: 10vh;
+          background-size: cover;
+          background-position: center;
+          }
+          nav .logo {
+                font-size: 24px;
+                font-weight: bold;
+                
+              }
+          
+          .logo h4 a{
+          color: black;
+          text-decoration: none;
+          font-family:"cursive", "Brush Script Mt";
+          font-size: 30px;
+          }
+          
+          
+          ul{
+          float:right;
+          list-style-type: none;
+          margin-top: 25px;
+          }
+          
+          ul li{
+          display:inline-block;
+          }
+          
+          ul li a{
+          text-decoration: none;
+          color: black;
+          padding: 8px 20px;
+          transition: 0.6s ease;
+          }
+          ul li a:hover{
+          background-color: black;
+          color: white;
+          border-radius:10px ;
+        
+          }
+          
+          .logo {
+          float:left;
+          margin-top: 20px;
+          margin-left: 20px;
+          }
+          
+          .main{
+          max-width: 1200px;
+          height:auto;
+          }
+          ul li.active a{
+          background-color: black;
+          color: white;
+          }
+          
+          .title{
+          position:absolute;
+          top:50%;
+          left: 60%;
+          transform: translate(-50%,-50%);
+          }
+          
+          .title h3{
+          color: black;
+          font-size: 20px;
+          }
+          
+          .button{
+          position:absolute;
+          top:70%;
+          left:50%;
+          transform: translate(-50%,-50%);
+          }
+          
+          .btn{
+          border: 1px solid black;
+          padding: 10px 30px;
+          color: black;
+          text-decoration: none;
+          transition: 0.6s ease;
+          }
+          
+          .btn:hover{
+          background-color: black;
+          color: white;
+          }
+          
+          *{
+          padding:0;
+          margin:0;
+          box-sizing: border-box;
+          font-family: Arial, Helvetica, sans-serif;
+          }
+          
+          </style>
+    </head>
+    <body>
+        <nav>
+            <div class="logo">
+                <h4 ><b><a href="#">CropMate</a></b></h4>
+              </div>
+    <ul>
+      <li><a class="active" href="{% url 'home' %}"><b>Home</a></li>
+      <li><a href="{% url 'products' %}">Products</a></li>
+      <li><a href="{% url 'recommend' %}">Recommendation</a></li>
+      <li><a href="{% url 'contact' %}">ContactUs</b></a></li>
+    </ul>
+    </nav>
+       {% block content %} {% endblock %}
+    </body>
+</html>
+
+
+
+  
+  
