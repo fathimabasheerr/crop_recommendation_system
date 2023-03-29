@@ -38,6 +38,19 @@ Home
 .btn{
           border: 1px solid white;
           padding: 10px 30px;
+          text-decoration: none;
+          transition: 0.6s ease;
+          font-family: "EB Garamond", serif;
+          top:-50px;
+          position: relative;
+          background-color: white;
+          color: black;
+          }
+          
+         
+          .btn1{
+          border: 1px solid white;
+          padding: 10px 30px;
           color: white;
           text-decoration: none;
           transition: 0.6s ease;
@@ -47,7 +60,7 @@ Home
           
           }
           
-          .btn:hover{
+          .btn1:hover{
           background-color: white;
           color: black;
           }
@@ -60,7 +73,7 @@ Home
         </div>
         <div class="button">
             <a href="{% url 'recommend' %}"class="btn">Recommendation</a> &nbsp;
-            &nbsp;<a href="{% url 'about' %}" class="btn">About</a>
+            &nbsp;<a href="{% url 'about' %}" class="btn1">About</a>
         </div>
     </body>
 </html>
