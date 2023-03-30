@@ -6,166 +6,186 @@ Products
 
 {% block content %}
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-        <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
-        <style>
-            @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
-
-html {
-  background:linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+<html lang="en" >
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Alkatra' rel='stylesheet'>
+  <meta charset="UTF-8">
+<style>
+@keyframes colorful {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
 }
 
-body {
-  color: #272727;
-  font-family: 'Quicksand', serif;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0;
-  padding: 0rem;
-
+h1, h2, h3, span, p {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
-.main{
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.main h1{
-    font-family: 'Sofia';font-size: 22px;
-}
-
-h1 {
-    font-size: 24px;
-    font-weight: 400;
-    text-align: center;
-}
-
-img {
-  height: auto;
-  max-width: 100%;
-  vertical-align: middle;
+html{
+    background: linear-gradient(to right,rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
 }
 
 
+body::-webkit-scrollbar {
+  background: #020202;
+  width: 10px;
+}
+body::-webkit-scrollbar-track {
+  background: #020202;
+}
+body::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 1px;
+}
 
-.cards {
+body .container {
+  position: relative;
+  z-index: 1;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
   flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  padding: 1em;
 }
-.card_image img {
-  height: 300px; 
-}
-
-.cards_item {
-  display: flex;
-  padding: 1rem;
-}
-
-@media (min-width: 40rem) {
-  .cards_item {
-    width: 50%;
-  }
-}
-
-@media (min-width: 56rem) {
-  .cards_item {
-    width: 33.3333%;
-  }
-}
-
-.card {
-  background-color: white;
-  border-radius: 0.25rem;
-  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+body .container .card {
+  position: relative;
+  width: 300px;
   height: 400px;
+  margin: 1em;
+  background: rgba(255, 255, 255, 0.486);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  backdrop-filter: blur(90px);
+  border: solid 2px transparent;
+  background-clip: padding-box;
+  box-shadow: 0px 10px 10px rgba(46, 54, 68, 0.03);
 }
-
-
-.card_content {
-  padding: 1rem;
-  background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);
+body .container .card .content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0.5;
+  transition: 0.5s;
 }
-
-
-.card_title {
-  color: #ffffff;
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: capitalize;
-  margin: 0px;
+body .container .card .content .img {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 10px solid rgba(0, 0, 0, 0.25);
 }
-
-.card_text {
-  color: #ffffff;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  margin-bottom: 1.25rem;    
-  font-weight: 400;
+body .container .card .content .img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
+body .container .card .content .cardContent h3 {
+  color: #343030;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-size: 25pxpx;
+  text-align: center;
+  margin: 20px 0 10px;
+  line-height: 1.1em;
+  font-family: 'Alkatra';
 
-        </style>
-    </head>
-    <body>
-        <div class="main">
-            <h1>Iot Products used:</h1>
-            <ul class="cards">
-              <li class="cards_item">
-                <div class="card">
-                  <div class="card_image"><img src="{% static '/images/arduino.jpg' %}" ></div>
-                  <div class="card_content">
-                    <h2 class="card_title">Arduino Uno</h2><br>
-                    <p class="card_text">Arduino is an open-source electronics platform based on easy-to-use hardware</p>
-                  </div>
-                </div>
-              </li>
-              <li class="cards_item">
-                <div class="card">
-                  <div class="card_image"><img src="{% static '/images/dht.webp' %}"></div>
-                  <div class="card_content">
-                    <h2 class="card_title">DHT11 sensor</h2><br>
-                    <p class="card_text">Dht11 sensor is used to measure humidity and temperature from the atmosphere</p>
-                    
-                  </div>
-                </div>
-              </li>
-              <li class="cards_item">
-                <div class="card">
-                  <div class="card_image"><img src="{% static '/images/npk.jpg' %}"></div>
-                  <div class="card_content">
-                    <h2 class="card_title">NPK sensor</h2><br>
-                    <p class="card_text">NPK sensor is used to measure nitrogen,potassium and phosphorus content from the soil</p>
-                    
-                  </div>
-                </div>
-              </li>
-              <li class="cards_item">
-                <div class="card">
-                  <div class="card_image"><img src="{% static '/images/ph.webp' %}"></div>
-                  <div class="card_content">
-                    <h2 class="card_title">Soil ph sensor</h2><br>
-                    <p class="card_text">Soil ph sensor is used to measure the ph value of the soil</p>
-                    
-                  </div>
-                </div>
-              </li>
-            </ul>
+
+}
+body .container .card .content .cardContent h3 span {
+  font-size: 20px;
+  font-family: 'Alkatra';
+  font-weight: 300;
+  text-transform: initial;
+}
+body .container .card .sci {
+  position: absolute;
+  bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+body .container .card .sci li {
+  margin: 0 10px;
+  transform: translateY(40px);
+  opacity: 0;
+  transition: 0.5s;
+  transition-delay: calc(0.1s * var(--i));
+}
+body .container .card .sci li a {
+  font-size: 24px;
+}
+body .container .card:hover .content {
+  opacity: 1;
+  transform: translateY(-20px);
+}
+body .container .card:hover .sci li {
+  transform: translateY(0px);
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="content">
+        <div class="img"><img src="{% static '/images/arduino.jpg' %}"></div>
+        <div class="cardContent">
+          <h3>Arduino Uno R3<br><span >Arduino is an open-source electronics platform based on easy-to-use hardware</span></h3>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="content">
+        <div class="img"><img src="{% static '/images/dht.webp' %}"></div>
+        <div class="cardContent">
+          <h3>DHT11<br><span>Dht11 sensor is used to measure humidity and temperature from the atmosphere</span></h3>
+        </div>
+      </div>
+     
+    </div>
+    <div class="card">
+        <div class="content">
+          <div class="img"><img src="{% static '/images/npk.jpg' %}"></div>
+          <div class="cardContent">
+            <h3>NPK sensor<br><span >NPK sensor is used to measure nitrogen, potassium and phosphorus content from the soil</span></h3>
           </div>
-          
-          
-        
-    </body>
+        </div>
+       
+      </div>
+      <div class="card">
+        <div class="content">
+          <div class="img"><img src="{% static '/images/ph.webp' %}"></div>
+          <div class="cardContent">
+            <h3>Soil Ph sensor<br><span>Soil ph sensor is used to measure the ph value of the soil</span></h3>
+          </div>
+        </div>
+       
+      </div>
+  </div>
+</body>
+<!-- partial -->
+  
+</body>
 </html>
 {% endblock%}

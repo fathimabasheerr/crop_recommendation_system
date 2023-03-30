@@ -20,29 +20,13 @@ Recommend
                 
                 background:linear-gradient(to right,rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
             }
-            body {
-             color: #272727;
-             font-family: 'Quicksand', serif;
-             font-style: normal;
-             font-weight: 400;
-             letter-spacing: 0;
-             padding: 0rem;
-
-}
-:root {
-  font-size: 20px;
-  box-sizing: inherit;
-}
-
 *,
 *:before,
 *:after {
   box-sizing: inherit;
 }
 
-p {
-  margin: 0;
-}
+
 
 p:not(:last-child) {
   margin-bottom: 1.5em;
@@ -100,7 +84,7 @@ select option {
   
 }
 select::after {
-  content: "\25BC"; /* the dropdown arrow character */
+  content: "\25BC"; 
   position: absolute;
   top: 50%;
   right: 10px;
@@ -109,7 +93,7 @@ select::after {
   color: #666;
 }
 button{
-    background-color: #4CAF50; /* Green */
+    background-color: #007200; /* Green */
   border: none;
   color: white;
   padding: 10px 20px;
@@ -125,7 +109,7 @@ button{
 }
 
 button:hover{
-    background-color: #3e8e41;
+    background-color: #38b000;
 }
 h3{
     font-family: 'Sofia';font-size: 22px;
@@ -151,7 +135,10 @@ h4{
             <h4>Ph value of the soil:</h4>
             <h4>Select the region to input rainfall:</h4><br>
             
-                <select name="district" id="district">
+            
+
+            
+                <select class="dropdown">
                     <option value="select">Select your district</option>
                     <option value="option1">Trivandrum</option>
                     <option value="option2">Kollam</option>
