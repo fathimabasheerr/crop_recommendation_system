@@ -163,31 +163,32 @@ h4{
             </div>
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-	<script>
-    var rainfall = {
-      'trivandrum' : '146',
-     'kollam' :'108',
-     'pathanamthitta':'217',
-     'alappuzha':'230',
-     'kottayam':'260',
-     'idukki':'272',
-     'ernakulam':'258',
-     'thrissur' :'208',
-     'palakkad' :'242',
-     'malappuram':'255',
-     'calicut' : '238',
-     'wayanad' : '117',
-     'kannur' : '200',
-     'kasargod' : '279',
-};
-		$(document).ready(function() {
-		  $('#option').change(function() {
-		    var selectedValue = $(this).val();
-		    var rainfallValue = rainfall[selectedValue];
-		    $('.rain').html('Average annual rainfall is ' + selectedValue + 'mm');
-		  });
-		});
-	</script>
+<script>
+  var rainfall = {
+    'trivandrum' : '146',
+    'kollam' :'108',
+    'pathanamthitta':'217',
+    'alappuzha':'230',
+    'kottayam':'260',
+    'idukki':'272',
+    'ernakulam':'258',
+    'thrissur' :'208',
+    'palakkad' :'242',
+    'malappuram':'255',
+    'calicut' : '238',
+    'wayanad' : '117',
+    'kannur' : '200',
+    'kasargod' : '279',
+  };
+
+  $(document).ready(function() {
+    $('#option').change(function() {
+      var value = $(this).val();
+      $('.rain').html(' Rainfall : ' + value + 'mm');
+    });
+  });
+</script>
+
             <center><button>Submit</button></center>
           </div>
         </li>
