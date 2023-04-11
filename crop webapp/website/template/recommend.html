@@ -138,23 +138,56 @@ h4{
             
 
                 
-                <select name="options" id="option" class="dropdown">
-                    <option value="select">Select your district</option>
-                    <option value="trivandrum">Trivandrum</option>
-                    <option value="kollam">Kollam</option>
-                    <option value="pathanamthitta">Pathanamthitta</option>
-                    <option value="alappuzha">Alappuzha</option>
-                    <option value="kottayam">Kottayam</option>
-                    <option value="idukki">Idukki</option>
-                    <option value="ernakulam">Ernakulam</option>
-                    <option value="thrissur">Thrissur</option>
-                    <option value="palakkad">Palakkad</option>
-                    <option value="malappuram">Malappuram</option>
-                    <option value="calicut">Calicut</option>
-                    <option value="wayanad">Wayanad</option>
-                    <option value="kannur">Kannur</option>
-                    <option value="kasargod">Kasargod</option>
+                <select name="option" id="option" class="dropdown">
+            
+                   <option >Select your district</option>
+                    <option value="146">Trivandrum</option>
+                    <option value="108">Kollam</option>
+                    <option value="217">Pathanamthitta</option>
+                    <option value="230">Alappuzha</option>
+                    <option value="260">Kottayam</option>
+                    <option value="272">Idukki</option>
+                    <option value="258">Ernakulam</option>
+                    <option value="208">Thrissur</option>
+                    <option value="242">Palakkad</option>
+                    <option value="255">Malappuram</option>
+                    <option value="238">Calicut</option>
+                    <option value="117">Wayanad</option>
+                    <option value="200">Kannur</option>
+                    <option value="279">Kasargod</option> 
+
+                  
             </select>
+            <div class="rain">
+            
+            </div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	<script>
+    var rainfall = {
+      'trivandrum' : '146',
+     'kollam' :'108',
+     'pathanamthitta':'217',
+     'alappuzha':'230',
+     'kottayam':'260',
+     'idukki':'272',
+     'ernakulam':'258',
+     'thrissur' :'208',
+     'palakkad' :'242',
+     'malappuram':'255',
+     'calicut' : '238',
+     'wayanad' : '117',
+     'kannur' : '200',
+     'kasargod' : '279',
+};
+		$(document).ready(function() {
+		  $('#option').change(function() {
+		    var selectedValue = $(this).val();
+		    var rainfallValue = rainfall[selectedValue];
+		    $('.rain').html('Average annual rainfall is ' + selectedValue + 'mm');
+		  });
+		});
+	</script>
             <center><button>Submit</button></center>
           </div>
         </li>
