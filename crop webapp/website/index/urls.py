@@ -8,4 +8,5 @@ urlpatterns = [
     path('recommend',views.recommend, name='recommend'),
     path('contact',views.contact, name='contact'),
     path('about',views.about,name='about'),
+    #path('getdata',views.about,name='about'),
 ]

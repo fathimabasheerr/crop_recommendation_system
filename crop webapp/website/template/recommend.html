@@ -1,5 +1,5 @@
 {% extends 'base.html' %} 
-
+{% load static %}
 {% block title %}
 Recommend
 {% endblock%}
@@ -173,22 +173,22 @@ h4{
 
         </style>
     </head>
+   
     <body>
+     
         <ul>
             <li class="first">
         <div class="card" >
             <center><h3>Input</h3></center><br>
-            <h4>Nitrogen content in soil  :</h4><div class="n">20kg/m</div>
-            <h4>phosphorus content in soil:</h4><div class="p">30</div>
-            <h4>potassium content in soil :</h4><div class="k">20</div>
-            <h4>Temperature               :</h4><div class="temp">90</div>
-            <h4>Humidity                  :</h4><div class="hum">99</div>
-            <h4>Ph value of the soil:</h4><div class="ph">6</div>
+              {% csrf_token %}
+            <h4>Nitrogen content in soil  :</h4><div class="n">{{n}}kg/m</div>
+            <h4>phosphorus content in soil:</h4><div class="p">{{p}}kg/m</div>
+            <h4>potassium content in soil :</h4><div class="k">{{k}}kg/m</div>
+            <h4>Temperature               :</h4><div class="temp">24.48<sup>o</sup>C</div>
+            <h4>Humidity                  :</h4><div class="hum">90%</div>
+            <h4>Ph value of the soil:</h4><div class="ph">6.5</div>
             <h4>Select the region to input rainfall:</h4><br>
             
-            
-
-                
                 <select name="option" id="option" class="dropdown">
             
                    <option >Select your district</option>
@@ -239,8 +239,10 @@ h4{
     });
   });
 </script>
-
-            <center><button>Submit</button></center>
+ 
+ <center><button type="submit">submit</button></center>  
+ 
+  
           </div>
         </li>
         <li class="sec">
@@ -249,9 +251,9 @@ h4{
             <h4>Recommending the suitable crop based on the given conditions:</h4>
             <br>
             <div class="img">
-                
+              <center><img src="{% static '/images/pom.jpg' %}"></center>
             </div><div class="output">
-
+              <center><h4>{{finalout}}</h4></center>
             </div><br><br><br><br><br><br><br><br>
             
           </div>
