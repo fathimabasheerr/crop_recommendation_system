@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.http import JsonResponse
+from django.template import loader
+import json
 import random
 import pandas as pd
+import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
@@ -10,35 +12,45 @@ from sklearn.naive_bayes import GaussianNB,BernoulliNB
 from sklearn.tree import DecisionTreeClassifier
 from sklearn import svm
 from sklearn.linear_model import LogisticRegression
+from django.http import JsonResponse
 
-
-
-finalresult = ''
-def npk():
-    n = random.randint(1, 100)
-    p = random.randint(1, 100)
-    k = random.randint(1, 100)
-    context = {
-        "n": n,
-        "p": p,
-        "k": k,
-    }
-    return context
-
+context1 = {}
 def recommend(request):
-     context = npk()
-     # if request.method == 'POST':
-     #    n = request.POST.get('n')
-     #    p = request.POST.get('p')
-     #    k = request.POST.get('k')
-     #    temp = request.POST.get('temp')
-     #    hum = request.POST.get('hum')
-     #    ph = request.POST.get('ph')
-     #    rain = request.POST.get('rain')
-     #    return JsonResponse({'success': True})
-     # else:
-     #    return JsonResponse({'success': False})
-     return render(request, 'recommend.html',context)
+     # context = await npk()
+     print("context1")
+     context = {}
+     # context['outputs']=''
+     global context1
+     outputs=''
+     n = random.randint(1, 100)
+     p = random.randint(1, 100)
+     k = random.randint(1, 100)
+     if request.method == 'POST':
+        dataList = list(json.loads(request.POST['dataList']))
+     #    print(dataList)
+        dataList = list(dataList)
+        dataLists = []
+        for i in dataList:
+             dataLists.append(float(i))
+     #    print(dataLists)
+        outputs = str(model(dataList))
+     #    print(outputs, " - ", type(outputs))
+     context['n'] = n
+     context['p'] = p
+     context['k'] = k
+     context['o'] = outputs
+     # print(context)
+     context1 = context
+     print(context1)
+     # return render(request, 'recommend.html',context)
+     return HttpResponseRedirect
+
+def output(request, context1):
+     print("Entered output()")
+     print()
+     return render(request, 'recommend.html',context1)
+
+
 
 def index(request):
      return render(request,'home.html')
@@ -49,8 +61,10 @@ def products(request):
 def model(inputlist):
      dataset=pd.read_csv('Crop_recommendation.csv')
      new_data = pd.DataFrame([{'N':inputlist[0],'P':inputlist[1],'K':inputlist[2],'temperature':inputlist[3], 'humidity':inputlist[4],'ph':inputlist[5],'rainfall':inputlist[6]}])
+     print(new_data.shape)
      scaler=StandardScaler()
-     data = dataset.append(new_data)
+     #data = pd.concat([data, pd.DataFrame([new_data])], ignore_index=True)
+     data = pd.concat([dataset,pd.DataFrame(new_data)],ignore_index= True)
      scaler.fit(data.drop("label",axis=1))
      Scaler_feature=scaler.transform(data.drop("label",axis=1))
      new_dataset=pd.DataFrame(Scaler_feature,columns=data.columns[:-1])
@@ -58,7 +72,6 @@ def model(inputlist):
      x = new_dataset[:-1]
      y = dataset['label']
      xtrain,xtest,ytrain,ytest = train_test_split(x,y,random_state=42,test_size=0.4)
-
      knn = KNeighborsClassifier(n_neighbors=47)
      gnb = GaussianNB()
      bnb = BernoulliNB()
@@ -104,6 +117,8 @@ def contact(request):
 
 def about(request):
      return render(request,'about.html')
+def output(request):
+     return render(request,"output.html")
 
 
 

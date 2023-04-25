@@ -180,7 +180,7 @@ h4{
           
             <li class="first">
         <div class="card" >
-          <form action="">
+          <form>
             <center><h3>Input</h3></center><br>
               {% csrf_token %}
             <h4>Nitrogen content in soil  :</h4><div class="n">{{n}}kg/m</div>
@@ -260,7 +260,7 @@ h4{
       let jsonData = JSON.stringify(dataList);
       console.log(jsonData)
       $.ajax({
-        url: 'recommend',
+        url: 'output',
         method: 'POST',
         headers: { 'X-CSRFToken': '{{ csrf_token }}' },
         data: { 'dataList': JSON.stringify(dataList) },
