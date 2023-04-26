@@ -196,11 +196,11 @@ h4{
             <center><h3>Input</h3></center><br>
               {% csrf_token %}
             <h4>Nitrogen content in soil  :</h4><div class="n">{{n}}kg/m</div>
-            <h4>phosphorus content in soil:</h4><div class="p">{{p}}kg/m</div>
-            <h4>potassium content in soil :</h4><div class="k">{{k}}kg/m</div>
-            <h4>Temperature               :</h4><div class="temp">24.48<sup>o</sup>C</div>
-            <h4>Humidity                  :</h4><div class="hum">90%</div>
-            <h4>Ph value of the soil:</h4><div class="ph">6.5</div>
+            <h4>Phosphorus content in soil:</h4><div class="p">{{p}}kg/m</div>
+            <h4>Potassium content in soil :</h4><div class="k">{{k}}kg/m</div>
+            <h4>Temperature               :</h4><div class="temp">{{temperature}}<sup>o</sup>C</div>
+            <h4>Humidity                  :</h4><div class="hum">{{humidity}}%</div>
+            <h4>PH value of the soil:</h4><div class="ph">{{ph}}</div>
             <h4>Select the region to input rainfall:</h4><br>
             
                 <select name="option" id="option" class="dropdown">

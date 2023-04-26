@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import HttpResponse
 from django.template import loader
 import json
 import random
+import csv
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
@@ -22,26 +24,34 @@ def recommend(request):
      # context['outputs']=''
      global context1
      outputs=''
-     n = random.randint(1, 100)
-     p = random.randint(1, 100)
-     k = random.randint(1, 100)
+     csv_data = pd.read_csv('input.csv', header=0)
+     # Convert the dataframe to a dictionary of lists
+     data = csv_data.to_dict('list')
+
+     # Print the resulting dictionary
+     print("*********************",data)
+     n = data['n'][-1]
+     p = data['p'][-1]
+     k = data['k'][-1]
+     temperature = data['temperature'][-1]
+     humidity = data['humidity'][-1]
+     ph = data['ph'][-1]
      if request.method == 'POST':
         dataList = list(json.loads(request.POST['dataList']))
-     #    print(dataList)
         dataList = list(dataList)
         dataLists = []
         for i in dataList:
              dataLists.append(float(i))
-     #    print(dataLists)
         outputs = str(model(dataList))
-     #    print(outputs, " - ", type(outputs))
      context['n'] = n
      context['p'] = p
      context['k'] = k
+     context['temperature'] = temperature
+     context['humidity'] = humidity
+     context['ph'] = ph
      context['o'] = outputs
-     # print(context)
      context1 = context
-     print(context1)
+     # print(context1)
      return render(request, 'recommend.html',context1)
      
 
@@ -58,8 +68,6 @@ def redirect_form_data(request):
         outputs1 = str(model(dataList))
      print("outputs  - " , outputs1)
      return render(request, 'recommend.html',context1)
-
-
 
 def index(request):
      return render(request,'home.html')
