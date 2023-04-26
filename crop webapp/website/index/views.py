@@ -42,12 +42,21 @@ def recommend(request):
      # print(context)
      context1 = context
      print(context1)
-     # return render(request, 'recommend.html',context)
-     return HttpResponseRedirect
+     return render(request, 'recommend.html',context1)
+     
 
-def output(request, context1):
+def redirect_form_data(request):
      print("Entered output()")
-     print()
+     outputs1 = ""
+     if request.method == 'POST':
+        dataList = list(json.loads(request.POST['dataList']))
+        dataList = list(dataList)
+        print("datalist - ", dataList)
+     #    for i in dataList:
+     #         dataLists.append(i)
+     #    print(dataLists)
+        outputs1 = str(model(dataList))
+     print("outputs  - " , outputs1)
      return render(request, 'recommend.html',context1)
 
 

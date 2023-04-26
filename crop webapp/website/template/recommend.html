@@ -92,7 +92,7 @@ select::after {
   font-size: 20px;
   color: #666;
 }
-button{
+#submit-btn{
     background-color: #007200; /* Green */
   border: none;
   color: white;
@@ -108,7 +108,7 @@ button{
     
 }
 
-button:hover{
+submit:hover{
     background-color: #38b000;
 }
 h3{
@@ -171,6 +171,18 @@ h4{
   font-weight: bold;
 }
 
+
+    img{
+      max-width: 50%;
+      max-height: 200px;
+      
+    }
+    div.img {
+      margin: 0 auto;
+      height: 100%;
+      width:100%;
+    }
+
         </style>
     </head>
    
@@ -180,7 +192,7 @@ h4{
           
             <li class="first">
         <div class="card" >
-          <form action="">
+          <form action="redirect_form_data">
             <center><h3>Input</h3></center><br>
               {% csrf_token %}
             <h4>Nitrogen content in soil  :</h4><div class="n">{{n}}kg/m</div>
@@ -242,7 +254,7 @@ h4{
   });
 </script>
  
- <center><button type="button" id="submit-btn">submit</button></center>  </form>
+ <center><input type="submit" id="submit-btn" name="submit"></center>  </form>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
  <script>
   $(document).ready(function() {
@@ -283,13 +295,59 @@ h4{
             <center><h3>Output</h3></center>
             <h4>Recommending the suitable crop based on the given conditions:</h4>
             <br>
-            <div class="img">
-              <center><img src="{% static '/images/pom.jpg' %}"></center>
+            <div class="img" style="">
+              <center>
+                {% if o == "pomegranate" %}
+                <img src="{% static '/images/pom.jpg' %}">
+                {% elif o == "rice" %}
+                <img src="{% static '/images/rice.webp' %}">
+                {% elif o == "maize" %}
+                <img src="{% static '/images/maize.jpeg' %}">
+                {% elif o == "chickpea" %}
+                <img src="{% static '/images/chickpea.jpg' %}">
+                {% elif o == "kidneybeans" %}
+                <img src="{% static '/images/kidneybeans.jpg' %}">
+                {% elif o == "pigeonpeas" %}
+                <img src="{% static '/images/pigeonpeas.webp' %}">
+                {% elif o == "mothbeans" %}
+                <img src="{% static '/images/mothbeans.jpg' %}">
+                {% elif o == "mungbean" %}
+                <img src="{% static '/images/mungbeans.jpg' %}">
+                {% elif o == "blackgram" %}
+                <img src="{% static '/images/maize.jpeg' %}">
+                {% elif o == "lentil" %}
+                <img src="{% static '/images/lentil.jpg' %}">
+                {% elif o == "banana" %}
+                <img src="{% static '/images/banana.jpg' %}">
+                {% elif o == "mango" %}
+                <img src="{% static '/images/mango.jpg' %}">
+                {% elif o == "grapes" %}
+                <img src="{% static '/images/grapes.jpeg' %}">
+                {% elif o == "watermelon" %}
+                <img src="{% static '/images/watermelon.jpg' %}">
+                {% elif o == "muskmelon" %}
+                <img src="{% static '/images/muskmelon.webp' %}">
+                {% elif o == "apple" %}
+                <img src="{% static '/images/apple.jpg' %}">
+                {% elif o == "orange" %}
+                <img src="{% static '/images/orange1.jpg' %}">
+                {% elif o == "papaya" %}
+                <img src="{% static '/images/papaya.jpeg' %}">
+                {% elif o == "coconut" %}
+                <img src="{% static '/images/coconut.jpg' %}">
+                {% elif o == "cotton" %}
+                <img src="{% static '/images/cotton.jpg' %}">
+                {% elif o == "jute" %}
+                <img src="{% static '/images/jute.jpeg' %}">
+                {% elif o == "coffee" %}
+                <img src="{% static '/images/coffee.jpeg' %}">
+                {% endif %}
+              </center>
             </div><div class="output">
               <center><h4>
                             {{o}} 
   
-              </h4></center>{{n}}
+              </h4></center>`
             </div><br><br><br><br><br><br><br><br>
             
           </div>

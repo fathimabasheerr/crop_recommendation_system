@@ -8,5 +8,5 @@ urlpatterns = [
     path('recommend',views.recommend, name='recommend'),
     path('contact',views.contact, name='contact'),
     path('about',views.about,name='about'),
-    path('output',views.output,name='output')
+    path('redirect_form_data',views.redirect_form_data,name='redirect_form_data')
 ]
